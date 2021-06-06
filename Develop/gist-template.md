@@ -26,11 +26,13 @@ Snippet: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 `^` matches the beginning of a target string, while `$` matches the end of the target string or input--these are called `Anchors`. For example, if we were to put in the email addresses `uni-corn_1@yahoo.com` and `unicorn@hotmail.govvvvv`, with `^` and the front of the input and `$` and the end (ex: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`), only `uni-corn_1@yhaoo.com` would be selected since it contains `a-z` letters and `0-9` numbers. `unicorn@hotmail.govvvvv` is not selected since it does not adhere to the limits "anchored" at the end of the expression that `$` is anchoring. Basically, it goes outside of the `quantifiers`. `Quantifiers` are explained in the next section.
 
 ### Quantifiers
-As the exmple above, `unicorn@hotmail.govvvvv` was not found in our regular expression. While it fulfils all the front parts of the expression, there are certain `quantifiers` in order that must match. The section, `{2,6}` is the `quantifier` stating that the back part of the email address string must be between two and six characters. If you notice, `.govvvvv` is seven characters which disqualifies it from being returned. 
+As the exmple above, `unicorn@hotmail.govvvvv` was not found in our regular expression. While it fulfils all the front parts of the expression, there are certain `quantifiers` in order that must match. The section, `{2,6}` is the `quantifier` stating that the back part of the email address string must be between two and six characters. If you notice, `.govvvvv` is seven characters which disqualifies it from being returned since it exceeds the six character limit. 
 
 ### Character Classes
+This email match example uses the `character class` `\d` which is the `digit` `character class`. When using `\d` this `class` finds any single digit. 
 
 ### Flags
+
 
 ### Grouping and Capturing
 
