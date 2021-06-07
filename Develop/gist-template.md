@@ -12,13 +12,10 @@ Snippet: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
 - [Character Classes](#character-classes)
-- [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+
 
 ## Regex Components
 
@@ -29,23 +26,34 @@ Snippet: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 As the exmple above, `unicorn@hotmail.govvvvv` was not found in our regular expression. While it fulfils all the front parts of the expression, there are certain `quantifiers` in order that must match. The section, `{2,6}` is the `quantifier` stating that the back part of the email address string must be between two and six characters. If you notice, `.govvvvv` is seven characters which disqualifies it from being returned since it exceeds the six character limit. 
 
 ### Character Classes
-This email match example uses the `character class` `\d` which is the `digit` `character class`. When using `\d` this `class` finds any single digit. 
-
-### Flags
-
+This email match example uses the `character class` `\d` which is the `digit` `character class`. Ex: `[\da-z\.-]`. When using `\d` this `class` finds any single digit. 
 
 ### Grouping and Capturing
+`Groups` are used to return certain sets of data. For example, this regex calls three parts: the username, the domain, and extension. 
+`/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/' Let's break down the parts:
+
+- Username: `([a-z0-9_\.-]+)`
+- Domain: `([\da-z\.-]+)`
+    *Notice that this includes `@` and `\.` around it to caputure the full part of the domain. Ex: `@yhaoo.`
+- Extension: `([a-z\.]{2,6})`
+
+Therefore, each part is `grouped` together and the strings are `captured` to make the full string.
 
 ### Bracket Expressions
+`Bracket Expressions` exist in a group. Take for example the `username` part of the regex: `([a-z0-9_\.-]+)`. this contains the bracket expression: `[a-z0-9_\.-]`.
+
+These `bracket expressions` are used to find matching or non-matching sets of data such as letters, numbers, or special characters in this case. 
+
+Let's break it down:
+
+`a-z`: is looking for lowercase letters, a-z
+`0-9`: looks for digits
+`_`: is looking for underscores
+`\.`: this part is looking for periods. However, the period requires a backslash `\` so that the period `.` can be found and included, or `captured.` This is called `escaping` a character and making it `literal.` In other words, for that `character` to literally be found. 
 
 ### Greedy and Lazy Match
-
-### Boundaries
-
-### Back-references
-
-### Look-ahead and Look-behind
+This expression uses `greedy matching` in its `groups.` How do we know this? By the use of the `+.` By making a match `greedy,` using the `+` allows it to find the logest match possible. Think of it as another quantifier. If you notice on the `exenstion group,` there is no `+,` but there is `{2,6}.` The `{2,6}` is fixed, but `+` is not. 
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Nancy holds expertise in Human Resources, but is expanding her skills into the world of Tech. Checkout her GitHub at: https://github.com/nancyrosas0.
